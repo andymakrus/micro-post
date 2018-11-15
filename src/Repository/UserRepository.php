@@ -24,7 +24,6 @@ class UserRepository extends ServiceEntityRepository
     {
     	$qb = $this->getFindAllWithMoreThenFivePostsQuery();
 	    $query = $qb->getQuery();
-	    dump($query);
     	return $query->getResult();
     }
 
