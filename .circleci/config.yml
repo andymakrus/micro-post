@@ -5,16 +5,14 @@ jobs:
     docker:
       - image: circleci/php:7.2.4-apache-stretch-node-browsers
         enviroment:
-          APP_ENV: test
-          DATABASE_URL: mysql://root:root@127.0.0.1/micro-post-test
-          TEST_DATABASE_DSN: mysql://root:root@127.0.0.1/micro-post-test
-          TEST_DATABASE: mysql://root:root@127.0.0.1/micro-post-test
+          APP_ENV: dev
+          DATABASE_URL: mysql://root:root@127.0.0.1/microposttest
           MAILER_FROM: micro@micropost.com
           MAILER_URL: smtp://7446ba11e59b8d:7b6a19a40c2a75@smtp.mailtrap.io:25
       - image: circleci/mysql:5.7
         enviroment:
           MYSQL_ROOT_PASSWORD: 'root'
-          MYSQL_DATABASE: micro-post-test
+          MYSQL_DATABASE: microposttest
     steps:
       - checkout
       - run:
