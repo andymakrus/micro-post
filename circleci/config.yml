@@ -1,0 +1,33 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/micropost
+    docker:
+      - image: circleci/php:7.2.4-apache-stretch-node-browsers
+        enviroment:
+          APP_ENV: test
+          DATABASE_URL: mysql://root:root@127.0.0.1/micro-post-test
+          MAILER_FROM: micro@micropost.com
+          MAILER_URL: smtp://7446ba11e59b8d:7b6a19a40c2a75@smtp.mailtrap.io:25
+      - image: circleci/mysql:5.7
+        enviroment:
+          MYSQL_ROOT_PASSWORD: 'root'
+          MYSQL_DATABASE: micro-post-test
+    steps:
+      - checkout
+      - run:
+          name: Install PHP & My_SQL
+          command: sudo docker-php-ext-install pdo_mysql
+      - run:
+          name: Wait for My_SQL
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+      - run:
+          name: Composer Update
+          command: sudo composer self-update
+      - run:
+          name: Composer install dependancies
+          command: composer install -n --prefer-dist
+      - run:
+          name: Run migrations
+          command: php bin/console doctrine:migrations:migrate --env=test --no-interaction
+
