@@ -6,7 +6,7 @@ jobs:
       - image: circleci/php:7.2.4-apache-stretch-node-browsers
         enviroment:
           APP_ENV: test
-          DATABASE_URL: mysql://ubuntu@127.0.0.1/circle_test
+          DATABASE_URL: mysql://root@127.0.0.1/circle_test
           MAILER_FROM: micro@micropost.com
           MAILER_URL: smtp://7446ba11e59b8d:7b6a19a40c2a75@smtp.mailtrap.io:25
       - image: circleci/mysql:5.7
