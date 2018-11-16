@@ -11,7 +11,7 @@ jobs:
           MAILER_URL: smtp://7446ba11e59b8d:7b6a19a40c2a75@smtp.mailtrap.io:25
       - image: circleci/mysql:5.7
         enviroment:
-          MYSQL_ROOT_PASSWORD: 'root'
+          MYSQL_ROOT_PASSWORD: 'password'
           MYSQL_DATABASE: microposttest
     steps:
       - checkout
