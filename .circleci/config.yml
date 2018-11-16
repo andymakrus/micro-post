@@ -16,6 +16,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install PHP libzip-dev
+          command: sudo apt-get install -y libzip-dev
+      - run:
           name: Install PHP & My_SQL
           command: sudo docker-php-ext-install pdo_mysql pdo mbstring zip
       - run:
