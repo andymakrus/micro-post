@@ -43,6 +43,9 @@ jobs:
       - image: circleci/php:7.2.4-apache-stretch-node-browsers
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+              - "a3:7d:98:e0:11:54:4d:5d:d0:c4:f5:34:a8:d4:5c:d7"
       - run:
           name: Install PHP libzip-dev
           command: sudo apt-get install -y libzip-dev
