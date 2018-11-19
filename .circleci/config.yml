@@ -56,6 +56,9 @@ jobs:
           name: Clear Cache
           command: php bin/console cache:clear --env=prod --no-interaction
       - run:
+          name: Install Uglify
+          command: npm i -D uglifyjs-webpack-plugin
+      - run:
           name: Yarn
           command: yarn install && yarn run encore production
       - run:

@@ -76,7 +76,7 @@
                 }
             ).then(function(response){
                 response.json().then(function (json) {
-                    document.getElementById('notification-count').innerText = json.count;
+                    document.getElementById('notification-count').innerText = json.count ? json.count : 0 ;
                     setTimeout(fetchNotificationCount, 5000);
                 });
             }).catch( function (reason) {
